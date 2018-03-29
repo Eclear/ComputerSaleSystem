@@ -19,7 +19,7 @@ class SaleSystem {
 public:
 	SaleSystem();
 	SaleSystem(int salesman_sum);
-	int salary(int sales_amount);
+	float salary(int sales_amount);
 	bool typein_sale_data(int sales_man_no, int computer_case, 
 		int display, int periheral);
 	bool sale(int sales_man_no, int product_type, int num);
@@ -29,7 +29,7 @@ private:
 	int* dispaly_;
 	int* peripheral_;
 	int* sales_amount_;
-	int* salary_;
+	float* salary_;
 };
 
 

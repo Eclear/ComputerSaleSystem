@@ -19,11 +19,21 @@ SaleSystem::SaleSystem(int salesman_sum)
 	dispaly_ = new int[salesman_sum]();
 	peripheral_ = new int[salesman_sum]();
 	sales_amount_ = new int[salesman_sum]();
-	salary_ = new int[salesman_sum]();
+	salary_ = new float[salesman_sum]();
 }
 
-int SaleSystem::salary(int sales_amount)
+float SaleSystem::salary(int sales_amount)  //Gradient salary
 {
+	float m_salary;
+	if (sales_amount < 1000 && sales_amount > 0) {
+		m_salary = sales_amount * 0.1;
+	}
+	else if (sales_amount < 1800) {
+		m_salary = 1000 * 0.1 + (sales_amount)*0.15;
+	}
+	else {
+		m_salary = 1000 * 0.1 + 800 * 1.15 + (sales_amount - 1800)*0.2;
+	}
 	return 0;
 }
 
@@ -38,7 +48,7 @@ bool SaleSystem::typein_sale_data(int sales_man_no, int computer_case, int displ
 			<< salary_[sales_man_no] << endl;
 		return true;
 	}
-	//
+	//Sale the products
 	else {
 		sale(sales_man_no, COMPUTER_CASE, computer_case);
 		sale(sales_man_no, DISPLAY, display);
