@@ -1,7 +1,5 @@
 #include "sale_system.h"
-#include<vector>
-#include<numeric>
-#include<iostream>
+
 using namespace std;
 
 SaleSystem::SaleSystem()
@@ -22,4 +20,71 @@ SaleSystem::SaleSystem(int salesman_sum)
 	peripheral_ = new int[salesman_sum]();
 	sales_amount_ = new int[salesman_sum]();
 	salary_ = new int[salesman_sum]();
+}
+
+int SaleSystem::salary(int sales_amount)
+{
+	return 0;
+}
+
+bool SaleSystem::typein_sale_data(int sales_man_no, int computer_case, int display, int periheral)
+{
+	if (computer_case == -1) {     //Return sale amount and salary
+		sales_amount_[sales_man_no] = case_price * computer_case_[sales_man_no]
+			+ display_price * dispaly_[sales_man_no]
+			+ peripheral_price * peripheral_[sales_man_no];
+		salary_[sales_man_no] = salary(sales_amount_[sales_man_no]);
+		cout << sales_amount_[sales_man_no] << " " 
+			<< salary_[sales_man_no] << endl;
+		return true;
+	}
+	//
+	else {
+		sale(sales_man_no, COMPUTER_CASE, computer_case);
+		sale(sales_man_no, DISPLAY, display);
+		sale(sales_man_no, PERIPHERAL, periheral);
+	}
+}
+
+bool SaleSystem::sale(int sales_man_no, int product_type, int num)
+{
+	int *product;
+	int price;
+	int *amount;
+	switch (product_type)
+	{
+	case COMPUTER_CASE: 
+		product = computer_case_;
+		price = case_price;
+		amount = &case_amount;
+		break;
+	case DISPLAY:
+		product = dispaly_;
+		price = display_price;
+		amount = &display_amount;
+		break;
+	case PERIPHERAL:
+		product = peripheral_;
+		price = peripheral_price;
+		amount = &peripheral_amount;
+		break;
+	default:
+		break;
+	}
+	if (num < 0) {
+		cout << "Input wrong!\n";
+		return false;
+	}
+	//There are enough products
+	if (num < *amount && num > 0) {
+		*amount -= num;
+		product[sales_man_no] += num;
+	}
+	//Products are not enough
+	else {
+		num = *amount;
+		*amount -= num;
+		product[sales_man_no] += num;
+	}
+	return true;
 }

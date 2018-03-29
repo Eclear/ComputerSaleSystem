@@ -1,7 +1,12 @@
 #pragma once
 #ifndef SALE_SESTEM_H
 #define SALE_SESTEM_H
+#define COMPUTER_CASE 1
+#define DISPLAY 2
+#define PERIPHERAL 3
 
+#include<vector>
+#include<iostream>
 using namespace std;
 int case_price = 25;
 int display_price = 30;
@@ -14,6 +19,10 @@ class SaleSystem {
 public:
 	SaleSystem();
 	SaleSystem(int salesman_sum);
+	int salary(int sales_amount);
+	bool typein_sale_data(int sales_man_no, int computer_case, 
+		int display, int periheral);
+	bool sale(int sales_man_no, int product_type, int num);
 private:
 	int salesman_sum_;
 	int* computer_case_;
