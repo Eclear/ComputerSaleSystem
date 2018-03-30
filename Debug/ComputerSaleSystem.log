@@ -1,9 +1,3 @@
-﻿  sale_system.cpp
-d:\codingexercise\c++\computersalesystem\computersalesystem\sale_system.cpp(33): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-d:\codingexercise\c++\computersalesystem\computersalesystem\sale_system.cpp(36): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-d:\codingexercise\c++\computersalesystem\computersalesystem\sale_system.cpp(39): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-d:\codingexercise\c++\computersalesystem\computersalesystem\sale_system.cpp(64): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
-  main_program.cpp
-  正在生成代码...
+﻿  main_program.cpp
   ComputerSaleSystem.vcxproj -> D:\codingexercise\C++\ComputerSaleSystem\Debug\ComputerSaleSystem.exe
   ComputerSaleSystem.vcxproj -> D:\codingexercise\C++\ComputerSaleSystem\Debug\ComputerSaleSystem.pdb (Full PDB)
