@@ -1,3 +1,10 @@
+//Read data from a file named "test.xls"
+//The first line should include one integer which is she sum of salesmen(from 1 to 10)
+//Substance lines include atmost 4 integers in respensentive of salesman number(0 to sum-1),
+//computer case, display and peripheral. -1 on computer case means get the sales amount and
+//salary of the appointed salesman.
+
+
 #include "sale_system.h"
 #include<fstream>
 #include<sstream>
@@ -5,6 +12,8 @@
 //#include<numeric>
 //#include<iostream>
 using namespace std;
+
+
 
 bool write_xls(string file_name) {
 	ofstream out_file;
@@ -16,6 +25,7 @@ bool write_xls(string file_name) {
 	out_file.close();
 	return true;
 }
+
 
 vector<int> read_xls(ifstream& in_file) {
 	//get a line of ints in xls, return vector
@@ -50,10 +60,14 @@ int main() {
 	//cout << "Type in the amount of salesman: ";
 	//cin >> sales_man_sum;
 	ifstream in_file;
+	ofstream out_file;
 	in_file.open("test.xls");
+	out_file.open("result.xls", ios::out | ios::trunc);
 	line_data = read_xls(in_file);
 	sales_man_sum = line_data[0];
 	SaleSystem my_system(sales_man_sum);
+
+	
 
 	//cout << "Computer sale system created, " << sales_man_sum << " salesmen contained.\n"
 	//	<< "Enter the sale data now,type -2 to exit: \n";
@@ -65,8 +79,10 @@ int main() {
 	}
 	while (sales_man_no >= 0) {
 		if (computer_case == -1) {
-			cout << my_system.get_amount(sales_man_no) << " ";
-			cout << my_system.get_salary(sales_man_no) << endl;
+			out_file << my_system.get_amount(sales_man_no) << "\t";
+			out_file << my_system.get_salary(sales_man_no) << endl;
+			//cout << my_system.get_amount(sales_man_no) << " ";
+			//cout << my_system.get_salary(sales_man_no) << endl;
 		}
 		else {
 			display = line_data[2];
@@ -81,5 +97,6 @@ int main() {
 		computer_case = line_data[1];
 	}
 	in_file.close();
+	out_file.close();
 	return 0;
 }
